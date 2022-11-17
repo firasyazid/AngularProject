@@ -1,0 +1,94 @@
+<p-toast></p-toast>
+<div class="admin-page">
+
+    <p-card [header]="editmode ? 'Edit Category':'Add Category' " subheader="You Can Add or Edit  Categories">
+        <div class="p-grid p-mb-10">
+            <div class="p-col-12">
+
+                <p-toolbar>
+                    <div class="p-toolbar-group-left">
+
+                    </div>
+
+                    <div class="p-toolbar-group-right">
+                        <p-button styleClass="p-button-primary p-mr-5" [label]="editmode ? 'Update' : 'Create'"
+                            icon="pi pi-plus" (click)="onSubmit()"></p-button>
+
+
+                        <p-button styleClass="p-button-secondary" label="Cancle" icon="pi pi-arrow-circle-left"
+                            routerLink="form"></p-button>
+                    </div>
+
+
+                </p-toolbar>
+            </div>
+        </div>
+        <div class="p-grid">
+
+            <div class="p-col-12">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>icon</th>
+
+
+
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-category>
+                    <tr>
+                        <td>{{category._id}}</td>
+                        <td>{{category.name }}</td>
+                        <td>{{category.icon}}</td>
+
+
+
+                    </tr>
+                </ng-template>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="p-grid">
+            <div class="p-col-5">
+                <form [formGroup]="form">
+                    <div class="card">
+                        <div class="formgrid grid">
+                            <div class="field col">
+                                <label for="name">Name</label>
+
+                                <input formControlName="name" id="name" type="text"
+                                    class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                                <small *ngIf="form.controls['name'].invalid && isSubmitted" class="p-error"> name is
+                                    required </small>
+                            </div>
+                            <div class="field col">
+                                <label for="icon">Icon</label>
+
+                                <input formControlName="icon" id="icon" type="text"
+                                    class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                                <small *ngIf="form.controls['icon'].invalid && isSubmitted" class="p-error"> icon is
+                                    required </small>
+
+                            </div>
+                            <div class="p-field p-col">
+
+                                <label for="color">color</label> <br>
+                                <p-colorPicker formControlName="color"></p-colorPicker>
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </p-card>
